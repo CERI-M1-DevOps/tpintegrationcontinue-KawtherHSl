@@ -10,7 +10,7 @@ jobs:
       - name: Hello # Une t�che pour saluer
         env:
           personneASaluer: 'Mon voisin Totoro'
-        run: echo "Bonjour ${personneASaluer}\"
+        run: echo "Bonjour ${personneASaluer}"
 
       - name: L'heure de salutation # Affiche l'heure de la pr�c�dente t�che
         run: echo "L'heure �tait \09/17/2025 10:57:37."
