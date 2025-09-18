@@ -5,7 +5,7 @@ public class ListeSimple {
     Noeud tete;
 
     /**
-     * Retourne la taille actuelle de la liste
+     * Retourne la taille actuelle de la liste.
      * @return la taille de la liste
      */
     public long getSize() {
@@ -13,7 +13,7 @@ public class ListeSimple {
     }
 
     /**
-     * Ajoute un élément en tête de la liste
+     * Ajoute un élément en tête de la liste.
      * @param element L'élément à ajouter à la liste
      */
     public void ajout(int element) {
