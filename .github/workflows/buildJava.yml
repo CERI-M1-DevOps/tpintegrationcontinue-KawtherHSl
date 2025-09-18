@@ -22,9 +22,9 @@ jobs:
 
       
       - name: Analyse de la qualité avec SonarCloud
-         env:
+        env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         run: |
+        run: |
           mvn -B verify sonar:sonar \
           -Dsonar.projectKey=CERI-M1-DevOps_tpintegrationcontinue-KawtherHSl \
           -Dsonar.organization=CERI-M1-DevOps \
