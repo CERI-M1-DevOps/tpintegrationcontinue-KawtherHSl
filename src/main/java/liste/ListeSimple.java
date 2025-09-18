@@ -114,7 +114,7 @@ public class ListeSimple {
     while (courant != null && courant.getSuivant() != r) {
         courant = courant.getSuivant();
     }
-    return courant; é
+    return courant; 
 }
 
 
