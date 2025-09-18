@@ -1,7 +1,8 @@
 package liste;
 
 /**
- * Représente une liste chaînée simple.
+ * Classe représentant une liste chaînée simple.
+ * Chaque élément est contenu dans un nœud.
  */
 public class ListeSimple {
     private long size;
@@ -17,7 +18,7 @@ public class ListeSimple {
 
     /**
      * Ajoute un élément en tête de la liste.
-     * @param element L'élément à ajouter
+     * @param element L'élément à ajouter à la liste
      */
     public void ajout(int element) {
         tete = new Noeud(element, tete);
@@ -25,9 +26,9 @@ public class ListeSimple {
     }
 
     /**
-     * Modifie le premier élément de la liste égal à element avec nouvelleValeur.
-     * @param element L'élément à rechercher dans la liste
-     * @param nouvelleValeur La nouvelle valeur à remplacer
+     * Modifie le premier élément égal à element avec nouvelleValeur.
+     * @param element L'élément à rechercher
+     * @param nouvelleValeur La valeur à remplacer pour le premier élément trouvé
      */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
@@ -40,7 +41,7 @@ public class ListeSimple {
     /**
      * Modifie toutes les occurrences d'un élément dans la liste.
      * @param element L'élément à rechercher
-     * @param nouvelleValeur La nouvelle valeur à appliquer
+     * @param nouvelleValeur La valeur de remplacement pour toutes les occurrences
      */
     public void modifieTous(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
@@ -52,25 +53,7 @@ public class ListeSimple {
     }
 
     /**
-     * Retourne tous les éléments de la liste sous forme de chaîne.
-     * @return Chaîne représentant tous les éléments de la liste
-     */
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("ListeSimple(");
-        Noeud n = tete;
-        while (n != null) {
-            sb.append(n);
-            n = n.getSuivant();
-            if (n != null)
-                sb.append(", ");
-        }
-        sb.append(")");
-        return sb.toString();
-    }
-
-    /**
-     * Supprime le premier élément correspondant à element.
+     * Supprime le premier élément correspondant à element dans la liste.
      * @param element L'élément à supprimer
      */
     public void supprimePremier(Object element) {
@@ -94,18 +77,18 @@ public class ListeSimple {
     }
 
     /**
-     * Supprime tous les éléments correspondant à element.
+     * Supprime tous les éléments correspondant à element dans la liste.
      * @param element L'élément à supprimer
      */
     public void supprimeTous(int element) {
-       tete = supprimeTousRecurs(element, tete);
+        tete = supprimeTousRecurs(element, tete);
     }
 
     /**
      * Supprime tous les nœuds contenant l'élément spécifié de manière récursive.
      * @param element L'élément à supprimer
-     * @param tete Le nœud courant de la liste
-     * @return Le nouveau nœud tête après suppression
+     * @param tete Le nœud actuel (début de la sous-liste)
+     * @return Le nœud de tête de la liste modifiée
      */
     public Noeud supprimeTousRecurs(Object element, Noeud tete) {
         if (tete != null) {
@@ -117,12 +100,13 @@ public class ListeSimple {
                 tete.setSuivant(suiteListe);
                 return tete;
             }
-        } else return null;
+        }
+        return null;
     }
 
     /**
-     * Retourne le nœud avant le dernier.
-     * @return Le nœud avant le dernier, ou null si vide ou un seul élément
+     * Retourne le nœud avant le dernier de la liste.
+     * @return Le nœud avant le dernier, ou null si la liste est vide ou ne contient qu'un seul élément
      */
     public Noeud getAvantDernier() {
         if (tete == null || tete.getSuivant() == null)
@@ -137,7 +121,7 @@ public class ListeSimple {
     }
 
     /**
-     * Inverse l'ordre des nœuds.
+     * Inverse l'ordre des nœuds dans la liste.
      */
     public void inverser() {
         Noeud precedent = null;
@@ -152,9 +136,9 @@ public class ListeSimple {
     }
 
     /**
-     * Retourne le nœud précédent celui donné.
+     * Retourne le nœud précédent celui donné en paramètre.
      * @param r Le nœud dont on cherche le prédécesseur
-     * @return Le nœud précédent ou null si r est la tête
+     * @return Le nœud précédent r, ou null si r est la tête ou n'existe pas dans la liste
      */
     public Noeud getPrecedent(Noeud r) {
         if (r == tete) return null;
@@ -162,27 +146,41 @@ public class ListeSimple {
         while (courant != null && courant.getSuivant() != r) {
             courant = courant.getSuivant();
         }
-        return courant; 
+        return courant;
     }
 
     /**
-     * Échange la position de deux nœuds.
-     * @param r1 Premier nœud
-     * @param r2 Second nœud
+     * Échange la position de deux nœuds dans la liste.
+     * @param r1 Premier nœud à échanger
+     * @param r2 Second nœud à échanger
      */
     public void echanger(Noeud r1, Noeud r2) {
         if (r1 == r2) return;
         Noeud precedentR1 = (r1 == tete) ? null : getPrecedent(r1);
         Noeud precedentR2 = (r2 == tete) ? null : getPrecedent(r2);
-
         if (precedentR1 != null) precedentR1.setSuivant(r2);
         else tete = r2;
-
         if (precedentR2 != null) precedentR2.setSuivant(r1);
         else tete = r1;
-
         Noeud temp = r1.getSuivant();
         r1.setSuivant(r2.getSuivant());
         r2.setSuivant(temp);
+    }
+
+    /**
+     * Retourne une représentation sous forme de chaîne de caractères de tous les éléments de la liste.
+     * @return Une chaîne listant tous les éléments
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("ListeSimple(");
+        Noeud n = tete;
+        while (n != null) {
+            sb.append(n);
+            n = n.getSuivant();
+            if (n != null) sb.append(", ");
+        }
+        sb.append(")");
+        return sb.toString();
     }
 }
