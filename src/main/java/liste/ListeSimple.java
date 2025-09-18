@@ -106,6 +106,8 @@ public class ListeSimple {
         tete = precedent;
     }
 
+
+
     
     public Noeud getPrecedent(Noeud r) {
     if (r == tete) return null;
