@@ -1,25 +1,25 @@
 package liste;
 
 /**
- * Classe représentant un nœud dans une liste chaînée simple.
- * Chaque nœud contient un élément et un pointeur vers le nœud suivant.
+ * Classe représentant un nœud d'une liste chaînée simple.
+ * Chaque nœud contient un élément et une référence au nœud suivant.
  */
 public class Noeud {
     private Object element;
     private Noeud suivant;
 
     /**
-     * Crée un nouveau nœud avec l'élément donné et le nœud suivant.
-     * @param e L'élément à stocker dans ce nœud
+     * Crée un nouveau nœud.
+     * @param element L'élément à stocker dans le nœud
      * @param suivant Le nœud suivant dans la liste
      */
-    public Noeud(int e, Noeud suivant) {
-        element = e;
+    public Noeud(Object element, Noeud suivant) {
+        this.element = element;
         this.suivant = suivant;
     }
 
     /**
-     * Retourne l'élément contenu dans ce nœud.
+     * Retourne l'élément stocké dans le nœud.
      * @return L'élément du nœud
      */
     public Object getElement() {
@@ -27,7 +27,7 @@ public class Noeud {
     }
 
     /**
-     * Modifie l'élément contenu dans ce nœud.
+     * Modifie l'élément stocké dans le nœud.
      * @param element Le nouvel élément à stocker
      */
     public void setElement(Object element) {
@@ -51,8 +51,8 @@ public class Noeud {
     }
 
     /**
-     * Retourne une représentation en chaîne de caractères du nœud.
-     * @return Une chaîne représentant l'élément du nœud
+     * Représentation sous forme de chaîne du nœud.
+     * @return Une chaîne représentant le nœud
      */
     @Override
     public String toString() {
