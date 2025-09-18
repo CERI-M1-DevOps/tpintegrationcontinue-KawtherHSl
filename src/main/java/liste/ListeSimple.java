@@ -18,9 +18,9 @@ public class ListeSimple {
 
     /**
      * Ajoute un élément en tête de la liste.
-     * @param element L'élément à ajouter à la liste
+     * @param element L'élément à ajouter
      */
-    public void ajout(int element) {
+    public void ajout(Object element) {
         tete = new Noeud(element, tete);
         size++;
     }
@@ -32,7 +32,7 @@ public class ListeSimple {
      */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
-        while (courant != null && courant.getElement() != element)
+        while (courant != null && !courant.getElement().equals(element))
             courant = courant.getSuivant();
         if (courant != null)
             courant.setElement(nouvelleValeur);
@@ -46,7 +46,7 @@ public class ListeSimple {
     public void modifieTous(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null) {
-            if (courant.getElement() == element)
+            if (courant.getElement().equals(element))
                 courant.setElement(nouvelleValeur);
             courant = courant.getSuivant();
         }
@@ -58,14 +58,14 @@ public class ListeSimple {
      */
     public void supprimePremier(Object element) {
         if (tete != null) {
-            if (tete.getElement() == element) {
+            if (tete.getElement().equals(element)) {
                 tete = tete.getSuivant();
                 size--;
                 return;
             }
             Noeud precedent = tete;
             Noeud courant = tete.getSuivant();
-            while (courant != null && courant.getElement() != element) {
+            while (courant != null && !courant.getElement().equals(element)) {
                 precedent = precedent.getSuivant();
                 courant = courant.getSuivant();
             }
@@ -80,7 +80,7 @@ public class ListeSimple {
      * Supprime tous les éléments correspondant à element dans la liste.
      * @param element L'élément à supprimer
      */
-    public void supprimeTous(int element) {
+    public void supprimeTous(Object element) {
         tete = supprimeTousRecurs(element, tete);
     }
 
@@ -93,7 +93,7 @@ public class ListeSimple {
     public Noeud supprimeTousRecurs(Object element, Noeud tete) {
         if (tete != null) {
             Noeud suiteListe = supprimeTousRecurs(element, tete.getSuivant());
-            if (tete.getElement() == element) {
+            if (tete.getElement().equals(element)) {
                 size--;
                 return suiteListe;
             } else {
