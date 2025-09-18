@@ -5,6 +5,7 @@ public class ListeSimple {
     Noeud tete;
 
 /**
+  * Retourne la taille actuelle de la liste
  * @return  la taille de la liste
  */
 
@@ -13,6 +14,7 @@ public class ListeSimple {
     }
 
 /**
+ * Ajoute un élément en tête de la liste
  * @param element L'élément à ajouter à la liste
  */
     public void ajout(int element) {
@@ -22,6 +24,7 @@ public class ListeSimple {
 
   
 /** 
+ * Modifie le premier élément de la liste égal à element avec nouvelleValeur.
  * @param element L'élément à rechercher dans la liste
  * @param nouvelleValeur La nouvelle valeur à remplacer pour le premier élément trouvé
  */
@@ -34,6 +37,7 @@ public class ListeSimple {
     }
 
 /** 
+ * Modifie toutes les occurrences d'un élément dans la liste.
  * @param element L'élément à rechercher dans la liste
  * @param nouvelleValeur La nouvelle valeur qui remplacera toutes les occurrences trouvées
  */
@@ -48,6 +52,8 @@ public class ListeSimple {
     }
 
 /**
+ * Retourne une représentation sous forme de chaîne de caractères
+ * de tous les éléments présents dans la liste.
  * @return Une chaîne de caractères listant tous les éléments de la liste
  */
 
@@ -65,6 +71,7 @@ public class ListeSimple {
     }
 
 /**
+ * Supprime premier élement de la liste
  * @param supprimer premier élement de la liste
  */
 
@@ -89,6 +96,7 @@ public class ListeSimple {
     }
 
 /**
+ * * Supprime tous les les élements de la liste
  * @param supprimer tous les élements de la liste
  */
 
@@ -97,6 +105,7 @@ public class ListeSimple {
     }
 
 /**
+ * * Supprime tous les nœuds contenant l'élément spécifié de manière récursive.
  * @param element L'élément à supprimer dans la liste
  * @param tete Le nœud actuel de la liste (début de la sous-liste)
  * @return Le nœud de tête de la liste modifiée après suppression
@@ -117,6 +126,7 @@ public class ListeSimple {
 
 
 /**
+ * Retourne le nœud avant le dernier de la liste.
  * @return Le nœud avant le dernier, ou null si la liste est vide ou ne contient qu'un seul élément
  */
 
@@ -152,6 +162,7 @@ public class ListeSimple {
 
 
 /**
+ * Retourne le nœud précédent celui donné en paramètre.
  * @param r Le nœud dont on cherche le prédécesseur
  * @return Le nœud précédent r, ou null si r est la tête ou n'existe pas dans la liste
  */
