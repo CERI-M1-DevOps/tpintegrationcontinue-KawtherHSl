@@ -23,5 +23,10 @@ jobs:
       - name: Analyse de la qualité avec SonarCloud
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
-          -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+        run: |
+          # Crée la clé du projet en remplaçant '/' par '_'
+          PROJECT_KEY=$(echo "${GITHUB_REPOSITORY}" | sed 's/\//_/')
+          echo "Project key: $PROJECT_KEY"
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=$PROJECT_KEY \
+            -Dsonar.login=$SONAR_TOKEN
